@@ -1,6 +1,14 @@
 import copy
 
 
+def save(filename, net):
+    pass
+
+
+def load(filename, data_layer):
+    pass
+
+
 class NeuralNetwork:
 
     def __init__(self, optimizer, weights_initializer, bias_initializer):
