@@ -1,6 +1,7 @@
-from . import Base
 import numpy as np
 import copy
+
+from . import Base
 
 
 class SoftMax(Base.BaseLayer):
