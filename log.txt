@@ -1,0 +1,9 @@
+On the UCI ML hand-written digits dataset using L1_regularizer we achieve an accuracy of: 96.4941569282137%
+On the UCI ML hand-written digits dataset using L2_regularizer we achieve an accuracy of: 97.16193656093489%
+On the UCI ML hand-written digits dataset using Dropout we achieve an accuracy of: 97.32888146911519%
+On the UCI ML hand-written digits dataset using L1_regularizer we achieve an accuracy of: 97.66277128547578%
+On the UCI ML hand-written digits dataset using L2_regularizer we achieve an accuracy of: 97.16193656093489%
+On the UCI ML hand-written digits dataset using Dropout we achieve an accuracy of: 96.4941569282137%
+On the UCI ML hand-written digits dataset using L1_regularizer we achieve an accuracy of: 97.32888146911519%
+On the UCI ML hand-written digits dataset using L2_regularizer we achieve an accuracy of: 96.99499165275459%
+On the UCI ML hand-written digits dataset using Dropout we achieve an accuracy of: 97.16193656093489%

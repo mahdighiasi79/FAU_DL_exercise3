@@ -10,6 +10,7 @@ class Dropout(Base.BaseLayer):
         super().__init__()
         self.probability = probability
         self.mask = None
+        self.type = 'Dropout'
 
     def forward(self, input_tensor):
         output_tensor = copy.deepcopy(input_tensor)

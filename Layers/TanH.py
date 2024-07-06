@@ -4,9 +4,11 @@ from . import Base
 
 
 class TanH(Base.BaseLayer):
+
     def __init__(self):
         super().__init__()
         self.activations = None
+        self.type = 'TanH'
 
     def forward(self, input_tensor):
         self.activations = np.tanh(input_tensor)
