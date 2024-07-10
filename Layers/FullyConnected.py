@@ -10,11 +10,11 @@ class FullyConnected(Base.BaseLayer):
         super().__init__()
         self.trainable = True
         self.weights = np.zeros((input_size + 1, output_size))
-        self.weights[:input_size, :] = Init.He.initialize((input_size, output_size), input_size, output_size)
-        self.weights[input_size, :] = Init.Constant().initialize((1, output_size), 1, output_size)
+        self.weights[:input_size, :] = Init.UniformRandom.initialize((input_size, output_size), input_size, output_size)
+        self.weights[input_size, :] = Init.UniformRandom.initialize((1, output_size), 1, output_size)
         self._optimizer = None
         self._gradient_weights = None
-        self.input_tensor = np.array([])
+        self.input_tensor = None
         self.type = "FullyConnected"
 
     def initialize(self, weights_initializer, bias_initializer):

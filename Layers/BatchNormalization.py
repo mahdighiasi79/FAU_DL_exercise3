@@ -26,7 +26,7 @@ class BatchNormalization(Base.BaseLayer):
         self.mean = None
         self.variance = None
 
-    def initialize(self):
+    def initialize(self, weights_initializer, bias_initializer):
         self.weights = np.ones((self.channels,))
         self.bias = np.zeros((self.channels,))
 

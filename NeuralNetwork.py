@@ -37,8 +37,9 @@ class NeuralNetwork:
         norm = 0
         for layer in self.layers:
             input_tensor = layer.forward(input_tensor)
-            if layer.trainable:
-                norm += self.optimizer.regularizer.norm(layer.weights)
+            if layer.trainable and self.optimizer is not None:
+                if self.optimizer.regularizer is not None:
+                    norm += self.optimizer.regularizer.norm(layer.weights)
         loss = self.loss_layer.forward(input_tensor, copy.deepcopy(self.label_tensor))
         loss += norm
         return loss
