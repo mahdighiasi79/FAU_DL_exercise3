@@ -22,8 +22,8 @@ class Conv(Base.BaseLayer):
         else:
             weights_shape = [num_kernels, convolution_shape[0], convolution_shape[1], convolution_shape[2]]
 
-        self.weights = Init.UniformRandom.initialize(weights_shape, np.prod(self.convolution_shape),
-                                                     np.prod(self.convolution_shape[1:] * num_kernels))
+        self.weights = Init.UniformRandom().initialize(weights_shape, np.prod(self.convolution_shape),
+                                                       np.prod(self.convolution_shape[1:] * num_kernels))
         self.bias = Init.Constant().initialize((num_kernels,), 1, num_kernels)
         self._gradient_weights = None
         self._gradient_bias = None

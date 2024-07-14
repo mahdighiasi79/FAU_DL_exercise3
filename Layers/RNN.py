@@ -64,14 +64,16 @@ class RNN(Base.BaseLayer):
         if not self.memorize:
             self.hidden_state = np.zeros((1, self.hidden_size))
 
+        tanh = T.TanH()
+        sigmoid = S.Sigmoid()
         output = []
         for i in range(time_steps):
             self.hidden_states.append(self.hidden_state)
             x_t = self.input_tensor[i].reshape((1, self.input_size))
             self.hidden_state = self.fc_h.forward(np.concatenate((x_t, self.hidden_state), axis=1))
-            self.hidden_state = T.TanH().forward(self.hidden_state)
+            self.hidden_state = tanh.forward(self.hidden_state)
             y = self.fc_y.forward(self.hidden_state)
-            y = S.Sigmoid().forward(y)
+            y = sigmoid.forward(y)
             output.append(y[0])
         self.hidden_states.append(self.hidden_state)
         self.output_tensor = np.array(output)
@@ -84,17 +86,17 @@ class RNN(Base.BaseLayer):
         gradient_weights_h = []
         new_error_tensor = []
         derivative_hidden_state = np.zeros((1, self.hidden_size))
+        sigmoid = S.Sigmoid()
+        tanh = T.TanH()
 
         for i in reversed(range(time_steps)):
             error = error_tensor[i].reshape((1, sequence_length))
-            sigmoid = S.Sigmoid()
             sigmoid.activations = self.output_tensor[i].reshape((1, sequence_length))
             error = sigmoid.backward(error)
             self.fc_y.input_tensor = self.hidden_states[i + 1]
             error = self.fc_y.backward(error)
             gradient_weights_y.append(self.fc_y.gradient_weights)
             error += derivative_hidden_state
-            tanh = T.TanH()
             tanh.activations = self.hidden_states[i + 1]
             error = tanh.backward(error)
             x_t = self.input_tensor[i].reshape((1, self.input_size))

@@ -12,9 +12,12 @@ class Constant:
 
 class UniformRandom:
 
-    @staticmethod
-    def initialize(weights_shape, fan_in, fan_out):
-        return np.random.uniform(0, 1, np.prod(weights_shape)).reshape(weights_shape)
+    def __init__(self, low=0, high=1):
+        self.low = low
+        self.high = high
+
+    def initialize(self, weights_shape, fan_in, fan_out):
+        return np.random.uniform(self.low, self.high, np.prod(weights_shape)).reshape(weights_shape)
 
 
 class Xavier:
